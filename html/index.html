@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Hallowen</title>
-    <!-- <script type="module" src="../js/script.js"></script> -->
+    <script type="module" src="../js/script.js"></script>
     <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
@@ -21,9 +21,10 @@
       </nav>
     </header>
 
-     <main>
+    <h2 class="h2-main">CRUD MONSTRUOS</h2>
+    <main>
       <fieldset class="fieldset-form">
-        <h2 class="h2-form">INFORMACIÓN DEL MONSTRUO</h2>
+        <h2>INFORMACIÓN DEL MONSTRUO</h2>
         <form action="" class="form-contenedor">
           <div class="inputs-contenedor">
             <label for="nombre"><img src="../icon/calabaza.png" alt="calabaza" class="icon-img" /> Nombre</label>
@@ -35,26 +36,28 @@
             <input type="text" id="alias" placeholder="Ingrese Alter-Ego" />
           </div>
 
-          <div class="div-form">
+          <div class="inputs-contenedor">
             <label><img src="../icon/pocion.png" alt="pocion" class="icon-img" />Defensa</label>
-            <div class="div-rdo">
-              <input type="radio" name="defensa" id="estaca" checked />
-              <label for="estaca">Estaca</label>
-            </div>
+            <div class="div-form">
+              <label class="label-radio">
+                <input type="radio" name="defensa" id="estaca" checked />
+                Estaca</label
+              >
 
-            <div class="div-rdo">
-              <input type="radio" name="defensa" id="plata" />
-              <label for="plata">Plata</label>
-            </div>
+              <label class="label-radio">
+                <input type="radio" name="defensa" id="plata" />
+                Plata</label
+              >
 
-            <div class="div-rdo">
-              <input type="radio" name="defensa" id="crucifijo" />
-              <label for="crucifijo">Crucifijo</label>
-            </div>
+              <label class="label-radio">
+                <input type="radio" name="defensa" id="crucifijo" />
+                Crucifijo</label
+              >
 
-            <div class="div-rdo">
-              <input type="radio" name="defensa" id="pocion" />
-              <label for="pocion">Pocion</label>
+              <label class="label-radio">
+                <input type="radio" name="defensa" id="pocion" />
+                Poción</label
+              >
             </div>
           </div>
 
@@ -72,6 +75,18 @@
         </form>
       </fieldset>
     </main>
+
+    <footer>
+      <nav>
+        <ul class="navbar">
+          <li><a href="#TOP">HOME</a></li>
+          <li><a href="#">MONSTRUOS</a></li>
+          <li><a href="#">BLOG</a></li>
+          <li><a href="#">CONTACTO</a></li>
+        </ul>
+      </nav>
+      <p>LABORATORIO III - TODOS LOS DERECHOS RESERVADOS 2023 ©</p>
+    </footer>
 
     <!-- <header class="header-back">
       <nav>
