@@ -6,11 +6,11 @@ export class Monstruo extends Personaje {
     this.miedo = miedo;
     this.defensa = defensa;
   }
-  toString() {
-    return `Nombre: ${this.nombre} <br>
-    tipo : ${this.tipo}<br>
-    alias : ${this.alias}<br>
-    miedo : ${this.miedo}<br>
-    defensa : ${this.defensa}<br>`;
-  }
+  // toString() {
+  //   return `Nombre: ${this.nombre} <br>
+  //   tipo : ${this.tipo}<br>
+  //   alias : ${this.alias}<br>
+  //   miedo : ${this.miedo}<br>
+  //   defensa : ${this.defensa}<br>`;
+  // }
 }
