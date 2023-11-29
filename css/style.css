@@ -194,6 +194,24 @@ option {
   font-weight: 600;
 }
 
+input[type="submit"] {
+  width: 30%;
+  text-align: center;
+  background-color: #f28c35;
+  border: none;
+  background-image: url("../icon/disquete.png");
+  background-position: left;
+  background-size: 25px 25px;
+  background-position-x: 10px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  color: #fce256;
+  background-color: #f28d35df;
+}
+
 .icon-img {
   width: 30px;
   padding: 3px;
