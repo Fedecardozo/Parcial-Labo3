@@ -49,5 +49,13 @@ export const ActualizarTabla = (contenedor, data) => {
   while (contenedor.hasChildNodes()) {
     contenedor.removeChild(contenedor.firstElementChild);
   }
-  contenedor.appendChild(CrearTabla(data));
+  //Loader
+  if (data.length) {
+    const $spinner = document.getElementById("spinner");
+    $spinner.hidden = false;
+    setTimeout(() => {
+      $spinner.hidden = true;
+      contenedor.appendChild(CrearTabla(data));
+    }, 2000);
+  }
 };
