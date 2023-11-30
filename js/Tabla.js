@@ -1,11 +1,10 @@
 export const CrearTabla = (element) => {
-  if (Array.isArray(element)) {
-    const $table = document.createElement("table");
+  const $table = document.createElement("table");
+  if (Array.isArray(element) && element.length > 0) {
     $table.appendChild(CrearTableHead(element[0]));
     $table.appendChild(CrearTableBody(element));
-    return $table;
   }
-  return null;
+  return $table;
 };
 
 function CrearTableHead(elementos) {

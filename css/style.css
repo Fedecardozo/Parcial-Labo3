@@ -70,6 +70,7 @@ main {
   padding: 15px;
   border: 2px solid #40160a;
   border-radius: 8px;
+  margin-top: 25px;
 }
 
 .form-contenedor {
@@ -97,7 +98,8 @@ label {
   align-items: center;
 }
 
-input {
+input,
+.btnEliminar {
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
@@ -195,7 +197,8 @@ option {
   font-weight: 600;
 }
 
-input[type="submit"] {
+input[type="submit"],
+.btnEliminar {
   width: 30%;
   text-align: center;
   background-color: #f28c35;
@@ -206,11 +209,20 @@ input[type="submit"] {
   background-position-x: 10px;
   background-repeat: no-repeat;
   cursor: pointer;
+  margin-top: 20px;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover,
+button:hover {
   color: #fce256;
   background-color: #f28d35df;
+}
+
+.cont-btns {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .icon-img {

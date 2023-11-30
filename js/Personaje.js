@@ -1,6 +1,6 @@
 export class Personaje {
-  constructor(nombre, tipo) {
-    this.id = null;
+  constructor(id, nombre, tipo) {
+    this.id = id;
     this.nombre = nombre;
     this.tipo = tipo;
   }

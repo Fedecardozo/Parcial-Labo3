@@ -25,37 +25,38 @@
     <main>
       <fieldset class="fieldset-form">
         <h2>INFORMACIÓN DEL MONSTRUO</h2>
-        <form action="" class="form-contenedor">
+
+        <form class="form-contenedor">
           <div class="inputs-contenedor">
             <label for="nombre"><img src="../icon/calabaza.png" alt="calabaza" class="icon-img" /> Nombre</label>
-            <input type="text" id="nombre" placeholder="Ingrese nombre" />
+            <input type="text" id="nombre" placeholder="Ingrese nombre" required />
           </div>
 
           <div class="inputs-contenedor">
             <label for="alias"><img src="../icon/murcielago.png" alt="murcielago" class="icon-img" /> Alias</label>
-            <input type="text" id="alias" placeholder="Ingrese Alter-Ego" />
+            <input type="text" id="alias" placeholder="Ingrese Alter-Ego" required />
           </div>
 
           <div class="inputs-contenedor">
             <label><img src="../icon/pocion.png" alt="pocion" class="icon-img" />Defensa</label>
             <div class="div-form">
               <label class="label-radio">
-                <input type="radio" name="defensa" id="estaca" checked />
+                <input type="radio" name="defensa" value="estaca" checked />
                 Estaca</label
               >
 
               <label class="label-radio">
-                <input type="radio" name="defensa" id="plata" />
+                <input type="radio" name="defensa" value="plata" />
                 Plata</label
               >
 
               <label class="label-radio">
-                <input type="radio" name="defensa" id="crucifijo" />
+                <input type="radio" name="defensa" value="crucifijo" />
                 Crucifijo</label
               >
 
               <label class="label-radio">
-                <input type="radio" name="defensa" id="pocion" />
+                <input type="radio" name="defensa" value="pocion" />
                 Poción</label
               >
             </div>
@@ -68,9 +69,12 @@
 
           <div class="inputs-contenedor">
             <label for="tipo"><img src="../icon/fantasma.png" alt="fantasma" class="icon-img" /> Tipo</label>
-            <select id="selectTipo" class="hover"></select>
+            <select id="selectTipo"></select>
           </div>
-          <input type="submit" value="Guardar" class="boton hover" />
+          <div class="cont-btns">
+            <input type="submit" value="Guardar" />
+            <button id="btnEliminar" class="btnEliminar" hidden>Eliminar</button>
+          </div>
         </form>
       </fieldset>
 
@@ -80,7 +84,7 @@
     <footer>
       <nav>
         <ul class="navbar">
-          <li><a href="#TOP">HOME</a></li>
+          <li><a href="#">HOME</a></li>
           <li><a href="#">MONSTRUOS</a></li>
           <li><a href="#">BLOG</a></li>
           <li><a href="#">CONTACTO</a></li>
