@@ -44,3 +44,10 @@ function CrearTableBody(elementos) {
 
   return $body;
 }
+
+export const ActualizarTabla = (contenedor, data) => {
+  while (contenedor.hasChildNodes()) {
+    contenedor.removeChild(contenedor.firstElementChild);
+  }
+  contenedor.appendChild(CrearTabla(data));
+};

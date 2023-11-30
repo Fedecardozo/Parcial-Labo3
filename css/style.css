@@ -99,7 +99,7 @@ label {
 }
 
 input,
-.btnEliminar {
+.btn {
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
@@ -198,7 +198,7 @@ option {
 }
 
 input[type="submit"],
-.btnEliminar {
+.btn {
   width: 30%;
   text-align: center;
   background-color: #f28c35;
