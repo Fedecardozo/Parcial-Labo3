@@ -6,11 +6,27 @@ export class Monstruo extends Personaje {
     this.miedo = miedo;
     this.defensa = defensa;
   }
-  // toString() {
-  //   return `Nombre: ${this.nombre} <br>
-  //   tipo : ${this.tipo}<br>
-  //   alias : ${this.alias}<br>
-  //   miedo : ${this.miedo}<br>
-  //   defensa : ${this.defensa}<br>`;
-  // }
 }
+
+export const CargarAtributos = (obj, key, value) => {
+  switch (key) {
+    case "id":
+      obj.id = value;
+      break;
+    case "nombre":
+      obj.nombre = value;
+      break;
+    case "tipo":
+      obj.tipo = value;
+      break;
+    case "alias":
+      obj.alias = value;
+      break;
+    case "miedo":
+      obj.miedo = value;
+      break;
+    case "defensa":
+      obj.defensa = value;
+      break;
+  }
+};

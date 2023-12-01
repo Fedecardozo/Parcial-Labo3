@@ -4,6 +4,7 @@ export const CrearTabla = (element) => {
     $table.appendChild(CrearTableHead(element[0]));
     $table.appendChild(CrearTableBody(element));
   }
+  $table.setAttribute("id", "tablaMonstruos");
   return $table;
 };
 
