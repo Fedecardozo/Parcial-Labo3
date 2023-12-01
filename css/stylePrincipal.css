@@ -46,17 +46,13 @@ header {
   margin: 0;
 }
 
-body {
+main {
   background-image: url("../img/main.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   min-height: 100vh;
-  background-attachment: fixed;
-}
-
-main {
-  flex-grow: 1;
+  /* background-attachment: fixed; */
 }
 
 .icon-img {
@@ -64,6 +60,22 @@ main {
   padding: 3px;
 }
 
+@media screen and (min-height: 600px) {
+  body {
+    background-image: url("../img/main.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+  }
+  main {
+    background-image: none;
+  }
+}
+.spinner {
+  height: 125px;
+  margin: auto;
+}
 /*FIN MAIN*/
 
 /*INICIO FOOTER*/
@@ -78,7 +90,7 @@ footer {
   background-position: center;
   height: 100px;
   color: #f28c35;
-  margin-top: 85vh;
+  /* margin-top: 85vh; */
 }
 
 footer p {

@@ -2,9 +2,13 @@ const monstruos = JSON.parse(localStorage.getItem("monstruos")) || [];
 
 function CrearContedorCard() {
   const $contenedor = document.createElement("div");
-  $contenedor.classList.add("container-fluid");
-  $contenedor.classList.add("vh-100");
-  $contenedor.classList.add("fondo-img");
+  $contenedor.classList.add("container");
+  // $contenedor.classList.add("vh-100");
+  $contenedor.classList.add("mt-4");
+  $contenedor.classList.add("mb-4");
+  // $contenedor.style.padding = "20px";
+
+  // $contenedor.style.backgroundColor = "blue";
   return $contenedor;
 }
 
@@ -22,7 +26,9 @@ function CrearCard() {
   $card.style.backgroundColor = "#40160a";
   $card.style.padding = "15px";
   $card.style.border = "1px solid black";
-  $card.classList.add("m-3");
+  $card.classList.add("mb-3");
+  // $card.classList.add("mt-4");
+  // $card.style.margin = " 10px 1px";
   return $card;
 }
 function CrearCardBody() {
@@ -51,6 +57,7 @@ function CrearParrafo($img, key, value) {
   $p.appendChild(texto);
   $p.appendChild($span);
   $p.style.weight = "600";
+  $p.style.color = "#f28c35";
   $p.style.textTransform = "Capitalize";
   return $p;
 }
@@ -61,27 +68,39 @@ const $main = document.querySelector("main");
 const $contenedor = CrearContedorCard();
 const $contenedorRow = CrearContedorRow();
 const fragment = document.createDocumentFragment();
-if (monstruos.length) {
-  monstruos.forEach((value) => {
-    const $card = CrearCard();
-    const $cardBody = CrearCardBody();
+const $spinner = document.getElementById("spinner");
+$spinner.hidden = false;
+$spinner.hidden = false;
 
-    for (const key in value) {
-      if (key === "id") continue;
-      const $img = CrearImg(key);
-      const $p = CrearParrafo($img, key, value[key]);
-      $cardBody.appendChild($p);
-    }
-    $card.appendChild($cardBody);
-    fragment.appendChild($card);
-  });
-} else {
-  $h2 = document.createElement("h2");
-  $h2.textContent = "No hay monstruos para mostrar";
-  $h2.style.weight = "600";
-  $h2.style.color = "red";
-  $contenedorRow.appendChild($h2);
-}
-$contenedorRow.appendChild(fragment);
-$contenedor.appendChild($contenedorRow);
-$main.appendChild($contenedor);
+setTimeout(() => {
+  //Traigo al padre del spinner
+  const padre = $spinner.parentNode;
+  //Del padre del spinner, busco al padre y despues elimino al hijo(padre del spinner)
+  padre.parentNode.removeChild(padre);
+  $spinner.hidden = true;
+
+  if (monstruos.length) {
+    monstruos.forEach((value) => {
+      const $card = CrearCard();
+      const $cardBody = CrearCardBody();
+
+      for (const key in value) {
+        if (key === "id") continue;
+        const $img = CrearImg(key);
+        const $p = CrearParrafo($img, key, value[key]);
+        $cardBody.appendChild($p);
+      }
+      $card.appendChild($cardBody);
+      fragment.appendChild($card);
+    });
+  } else {
+    $h2 = document.createElement("h2");
+    $h2.textContent = "No hay monstruos para mostrar";
+    $h2.style.weight = "600";
+    $h2.style.color = "red";
+    $contenedorRow.appendChild($h2);
+  }
+  $contenedorRow.appendChild(fragment);
+  $contenedor.appendChild($contenedorRow);
+  $main.appendChild($contenedor);
+}, 2000);
