@@ -19,6 +19,22 @@ Ajax
     (callback)
     1:16:00
     const URL = "http://localhost:3000/personas";
+    
+    const getPersonas = () =>{
+        const xhr = new XMLHttpRequest();
+        xhr.addEventListener("readystateChange",()=>{
+            if(xhr.readyState == 4)//Respuesta ok
+            {
+                if(xhr.status >= 200 && xhr.status < 300){
+                    const data = JSON.parse(xhr.responseText);
+                }
+            }
+            else
+            {
+
+            }
+        });
+    }
 
 Fetch
     (promesas)

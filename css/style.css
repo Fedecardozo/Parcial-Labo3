@@ -36,6 +36,7 @@ header {
   text-decoration: none;
   font-weight: 600;
   margin-right: 15px;
+  color: #f28c35;
 }
 
 .navbar a:hover {
@@ -49,7 +50,9 @@ header {
 .h2-main {
   text-align: center;
   background-color: #40160a;
+  color: #f28c35;
   padding: 7px;
+  margin: 0;
 }
 
 main {
@@ -57,12 +60,12 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 15px;
+  /* padding: 15px; */
   background-image: url("../img/main.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  /* width: 100vw; */
+  width: 100%;
 }
 
 .fieldset-form {
@@ -70,7 +73,8 @@ main {
   padding: 15px;
   border: 2px solid #40160a;
   border-radius: 8px;
-  margin-top: 25px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .form-contenedor {
