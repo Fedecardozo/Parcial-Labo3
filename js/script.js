@@ -4,6 +4,7 @@ import { cargarSelect, ManejoBtns, CargarFormulario } from "./Formulario.js";
 
 //Formulario
 const selectTipo = document.querySelectorAll("select");
+const filterTipo = selectTipo[1];
 cargarSelect(selectTipo[0]);
 cargarSelect(selectTipo[1]);
 const $form = document.forms[0];
@@ -18,7 +19,7 @@ $btnCancelar.style.backgroundColor = "#f4787e";
 const monstruos = JSON.parse(localStorage.getItem("monstruos")) || [];
 const $seccionTala = document.getElementById("tabla");
 ActualizarTabla($seccionTala, monstruos);
-
+PromedioMiedo(monstruos);
 //ID
 let id;
 
@@ -64,6 +65,25 @@ window.addEventListener("click", (e) => {
     const selectedMonstruo = monstruos.find((value) => value.id == id);
     CargarFormulario($form, selectedMonstruo);
     ManejoBtns($btnSubmit, $btnEliminar, $btnCancelar, false);
+  } else if (e.target.matches("input[type = 'checkbox']")) {
+  }
+});
+
+filterTipo.addEventListener("change", (e) => {
+  const seleccion = e.target.value;
+  //ARRAYAS
+  /*Agregar una sección que permita filtrar la tabla que se muestra por pantalla por tipo de 
+  monstruo cuyas opciones son Todos/Vampiro/Hombre 
+  Lobo/Fantasma/Esqueleto/Bruja/Zombie. Por defecto debe ser todos */
+  if (seleccion === "todos") {
+    ActualizarTabla($seccionTala, monstruos);
+    PromedioMiedo(monstruos);
+  } else {
+    const filtroTipo = monstruos.filter((obj) => {
+      return obj.tipo === seleccion;
+    });
+    ActualizarTabla($seccionTala, filtroTipo);
+    PromedioMiedo(filtroTipo);
   }
 });
 
@@ -93,4 +113,15 @@ function monstruoDelete(idMonstruo) {
 
 function actualizarStorage() {
   localStorage.setItem("monstruos", JSON.stringify(monstruos));
+}
+
+function PromedioMiedo(arrayMonstruos) {
+  let suma = 0;
+  arrayMonstruos
+    .map((monster) => parseInt(monster.miedo))
+    .forEach((element) => {
+      suma += element;
+    });
+  console.log(suma / arrayMonstruos.length);
+  document.getElementById("txtPromedio").value = suma / arrayMonstruos.length;
 }

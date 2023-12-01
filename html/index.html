@@ -81,23 +81,21 @@
         </form>
       </fieldset>
 
-      <img src="../img/spinner.gif" alt="spinner" id="spinner" class="spinner" hidden />
-      <section id="tabla"></section>
-
-      <h2 class="h2-main">FILTRAR MONSTRUOS</h2>
-      <section class="container m-4" id="filtro">
+      <section class="container" id="filtro">
         <form>
           <div class="row bg-secondary mb-4">
             <div class="col-6">
               <label class="form-label">
                 Tipo
-                <select name="tipo" class="form-select m-3" id="filtroTipo"></select>
+                <select name="tipo" class="form-select m-3 text-center" id="filtroTipo">
+                  <option value="todos" selected>Todos</option>
+                </select>
               </label>
             </div>
             <div class="col-6">
               <label class="form-label">
                 Promedio
-                <input type="number" class="form-control m-3" id="promedio" disabled />
+                <input type="text" class="form-control m-3 text-center" id="txtPromedio" disabled />
               </label>
             </div>
           </div>
@@ -137,7 +135,8 @@
         </form>
       </section>
 
-      <section id="tabla-filtro"></section>
+      <img src="../img/spinner.gif" alt="spinner" id="spinner" class="spinner" hidden />
+      <section id="tabla"></section>
     </main>
 
     <footer>
