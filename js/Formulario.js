@@ -1,5 +1,6 @@
-export const cargarSelect = () => {
-  const selectTipo = document.getElementById("selectTipo");
+export const cargarSelect = (select) => {
+  // const selectTipo = document.getElementById("selectTipo");
+
   const tipos = JSON.parse(localStorage.getItem("tipos"));
   const fragment = document.createDocumentFragment();
   tipos.forEach((tipo) => {
@@ -8,7 +9,7 @@ export const cargarSelect = () => {
     option.value = tipo;
     fragment.appendChild(option);
   });
-  selectTipo.appendChild(fragment);
+  select.appendChild(fragment);
 };
 
 export const ManejoBtns = ($btnGuardar, $btnEliminar, $btnCancelar, guardar) => {

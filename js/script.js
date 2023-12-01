@@ -3,7 +3,9 @@ import { ActualizarTabla } from "./Tabla.js";
 import { cargarSelect, ManejoBtns, CargarFormulario } from "./Formulario.js";
 
 //Formulario
-cargarSelect();
+const selectTipo = document.querySelectorAll("select");
+cargarSelect(selectTipo[0]);
+cargarSelect(selectTipo[1]);
 const $form = document.forms[0];
 const $btnSubmit = document.querySelector("input[type = 'submit']");
 const $btnEliminar = document.getElementById("btnEliminar");
