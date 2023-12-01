@@ -66,7 +66,7 @@ main {
   padding: 3px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
   .navbar {
     display: block;
     margin: 0;
