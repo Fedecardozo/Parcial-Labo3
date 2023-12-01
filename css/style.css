@@ -239,6 +239,7 @@ button:hover {
 /*INICIO SECCION TABLA*/
 .spinner {
   height: 125px;
+  margin: auto;
 }
 
 table {
@@ -295,6 +296,8 @@ footer p {
 @media screen and (max-width: 900px) {
   .navbar {
     display: block;
+    margin: 0;
+    padding: 0;
   }
   .fieldset-form {
     width: 80vw;

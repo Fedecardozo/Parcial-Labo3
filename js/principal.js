@@ -23,19 +23,15 @@ function CrearContedorRow() {
 }
 
 function CrearCard() {
-  // const col = monstruos.length > 4 ? "col-3" : "col";
   const $card = document.createElement("div");
   $card.classList.add("card");
-  // $card.classList.add(col);
   $card.classList.add("col-12");
   $card.classList.add("col-md-6");
-  $card.classList.add("col-lg-3");
+  $card.classList.add("col-lg-4");
   $card.style.backgroundColor = "#40160a";
   $card.style.padding = "15px";
   $card.style.border = "1px solid black";
   $card.classList.add("mb-3");
-  // $card.classList.add("mt-4");
-  // $card.style.margin = " 10px 1px";
   return $card;
 }
 function CrearCardBody() {
