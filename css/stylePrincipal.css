@@ -1,6 +1,12 @@
 /*INICIO HEADER NAVBAR*/
 
-header {
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header,
+footer {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -60,18 +66,14 @@ main {
   padding: 3px;
 }
 
-@media screen and (min-height: 600px) {
-  body {
-    background-image: url("../img/main.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-  }
-  main {
-    background-image: none;
+@media screen and (max-width: 800px) {
+  .navbar {
+    display: block;
+    margin: 0;
+    padding: 0;
   }
 }
+
 .spinner {
   height: 125px;
   margin: auto;
@@ -80,17 +82,8 @@ main {
 
 /*INICIO FOOTER*/
 footer {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 5px;
-  background-image: url("../img/header.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   height: 100px;
   color: #f28c35;
-  /* margin-top: 85vh; */
 }
 
 footer p {

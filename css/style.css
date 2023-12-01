@@ -248,6 +248,7 @@ table {
   border-collapse: collapse;
   width: 95vw;
   text-align: center;
+  opacity: 96%;
 }
 table thead {
   background-color: #f19446;
@@ -290,3 +291,18 @@ footer p {
   font-weight: 600;
 }
 /*FIN FOOTER*/
+
+@media screen and (max-width: 900px) {
+  .navbar {
+    display: block;
+  }
+  .fieldset-form {
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .fieldset-form {
+    width: 87vw;
+  }
+}

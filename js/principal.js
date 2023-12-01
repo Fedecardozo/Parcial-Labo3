@@ -4,8 +4,10 @@ function CrearContedorCard() {
   const $contenedor = document.createElement("div");
   $contenedor.classList.add("container");
   // $contenedor.classList.add("vh-100");
-  $contenedor.classList.add("mt-4");
-  $contenedor.classList.add("mb-4");
+  // $contenedor.classList.add("mt-4");
+  // $contenedor.classList.add("mb-4");
+  $contenedor.classList.add("pt-4");
+  $contenedor.classList.add("pb-4");
   // $contenedor.style.padding = "20px";
 
   // $contenedor.style.backgroundColor = "blue";
@@ -15,14 +17,19 @@ function CrearContedorCard() {
 function CrearContedorRow() {
   const $contenedor = document.createElement("div");
   $contenedor.classList.add("row");
+  $contenedor.classList.add("align-items-start");
 
   return $contenedor;
 }
 
 function CrearCard() {
+  // const col = monstruos.length > 4 ? "col-3" : "col";
   const $card = document.createElement("div");
   $card.classList.add("card");
-  $card.classList.add("col-3");
+  // $card.classList.add(col);
+  $card.classList.add("col-12");
+  $card.classList.add("col-md-6");
+  $card.classList.add("col-lg-3");
   $card.style.backgroundColor = "#40160a";
   $card.style.padding = "15px";
   $card.style.border = "1px solid black";
@@ -98,6 +105,12 @@ setTimeout(() => {
     $h2.textContent = "No hay monstruos para mostrar";
     $h2.style.weight = "600";
     $h2.style.color = "red";
+    $h2.style.textAlign = "center";
+    $main.style.display = "flex";
+    $main.style.flexDirection = "column";
+    $main.style.alignItems = "center";
+    $main.style.justifyContent = "center";
+
     $contenedorRow.appendChild($h2);
   }
   $contenedorRow.appendChild(fragment);
