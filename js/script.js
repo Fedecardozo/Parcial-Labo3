@@ -42,13 +42,16 @@ $form.addEventListener("submit", (e) => {
 });
 
 //Boton eliminar
-$btnEliminar.addEventListener("click", () => {
+$btnEliminar.addEventListener("click", (e) => {
+  e.preventDefault();
   monstruoDelete(id);
   $form.reset();
 });
 
 //Boton cancelar
-$btnCancelar.addEventListener("click", () => {
+$btnCancelar.addEventListener("click", (e) => {
+  e.preventDefault();
+
   ManejoBtns($btnSubmit, $btnEliminar, $btnCancelar, true);
   $form.reset();
 });

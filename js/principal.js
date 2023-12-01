@@ -17,7 +17,7 @@ function CrearContedorCard() {
 function CrearContedorRow() {
   const $contenedor = document.createElement("div");
   $contenedor.classList.add("row");
-  $contenedor.classList.add("align-items-start");
+  $contenedor.classList.add("justify-content-center");
 
   return $contenedor;
 }
@@ -83,6 +83,7 @@ setTimeout(() => {
   $spinner.hidden = true;
 
   if (monstruos.length) {
+    // $main.style.minHeight = monstruos.length > 3 ? "auto" : "100vh";
     monstruos.forEach((value) => {
       const $card = CrearCard();
       const $cardBody = CrearCardBody();
