@@ -46,17 +46,12 @@ function CrearTableBody(elementos) {
   return $body;
 }
 
-export const ActualizarTabla = (contenedor, data) => {
+export const ActualizarTable = (contenedor, data) => {
   while (contenedor.hasChildNodes()) {
     contenedor.removeChild(contenedor.firstElementChild);
   }
   //Loader
   if (data.length) {
-    const $spinner = document.getElementById("spinner");
-    $spinner.hidden = false;
-    setTimeout(() => {
-      $spinner.hidden = true;
-      contenedor.appendChild(CrearTabla(data));
-    }, 2000);
+    contenedor.appendChild(CrearTabla(data));
   }
 };

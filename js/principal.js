@@ -1,16 +1,50 @@
-const monstruos = JSON.parse(localStorage.getItem("monstruos")) || [];
+import { fetchGet } from "./fetch.js";
+
+export const CargarCards = ($main, URL_DB) => {
+  const $spinner = document.getElementById("spinner");
+  fetchGet(URL_DB, $spinner, (data) => {
+    const monstruos = data;
+    const $contenedor = CrearContedorCard();
+    const $contenedorRow = CrearContedorRow();
+    const fragment = document.createDocumentFragment();
+    $spinner.hidden = true;
+
+    if (monstruos.length) {
+      monstruos.forEach((value) => {
+        const $card = CrearCard();
+        const $cardBody = CrearCardBody();
+
+        for (const key in value) {
+          if (key === "id") continue;
+          const $img = CrearImg(key);
+          const $p = CrearParrafo($img, key, value[key]);
+          $cardBody.appendChild($p);
+        }
+        $card.appendChild($cardBody);
+        fragment.appendChild($card);
+      });
+      //Traigo al padre del spinner
+      const padre = $spinner.parentNode;
+      //Del padre del spinner, busco al padre y despues elimino al hijo(padre del spinner)
+      padre.parentNode.removeChild(padre);
+      $contenedorRow.appendChild(fragment);
+      $contenedorRow.appendChild(fragment);
+      $contenedor.appendChild($contenedorRow);
+      $main.appendChild($contenedor);
+    } else {
+      alert("No hay monstruos para mostrar");
+    }
+    $contenedorRow.appendChild(fragment);
+    $contenedor.appendChild($contenedorRow);
+    $main.appendChild($contenedor);
+  });
+};
 
 function CrearContedorCard() {
   const $contenedor = document.createElement("div");
   $contenedor.classList.add("container");
-  // $contenedor.classList.add("vh-100");
-  // $contenedor.classList.add("mt-4");
-  // $contenedor.classList.add("mb-4");
   $contenedor.classList.add("pt-4");
   $contenedor.classList.add("pb-4");
-  // $contenedor.style.padding = "20px";
-
-  // $contenedor.style.backgroundColor = "blue";
   return $contenedor;
 }
 
@@ -44,7 +78,7 @@ function CrearImg(key) {
   const $img = document.createElement("img");
   $img.classList.add("icon-img");
   const src = "../icon/";
-  // $img.setAttribute("alt", key);
+  $img.setAttribute("alt", key);
   $img.setAttribute("src", src + key + ".png");
   return $img;
 }
@@ -64,53 +98,3 @@ function CrearParrafo($img, key, value) {
   $p.style.textTransform = "Capitalize";
   return $p;
 }
-
-// Crear Cards
-
-const $main = document.querySelector("main");
-const $contenedor = CrearContedorCard();
-const $contenedorRow = CrearContedorRow();
-const fragment = document.createDocumentFragment();
-const $spinner = document.getElementById("spinner");
-$spinner.hidden = false;
-$spinner.hidden = false;
-
-setTimeout(() => {
-  //Traigo al padre del spinner
-  const padre = $spinner.parentNode;
-  //Del padre del spinner, busco al padre y despues elimino al hijo(padre del spinner)
-  padre.parentNode.removeChild(padre);
-  $spinner.hidden = true;
-
-  if (monstruos.length) {
-    // $main.style.minHeight = monstruos.length > 3 ? "auto" : "100vh";
-    monstruos.forEach((value) => {
-      const $card = CrearCard();
-      const $cardBody = CrearCardBody();
-
-      for (const key in value) {
-        if (key === "id") continue;
-        const $img = CrearImg(key);
-        const $p = CrearParrafo($img, key, value[key]);
-        $cardBody.appendChild($p);
-      }
-      $card.appendChild($cardBody);
-      fragment.appendChild($card);
-    });
-  } else {
-    $h2 = document.createElement("h2");
-    $h2.textContent = "No hay monstruos para mostrar";
-    $h2.style.weight = "600";
-    $h2.style.color = "red";
-    $h2.style.textAlign = "center";
-    $main.style.display = "flex";
-    $main.style.flexDirection = "column";
-    $main.style.alignItems = "center";
-    $main.style.justifyContent = "center";
-
-    $contenedorRow.appendChild($h2);
-  }
-  $contenedorRow.appendChild(fragment);
-  $contenedor.appendChild($contenedorRow);
-  $main.appendChild($contenedor);
-}, 2000);

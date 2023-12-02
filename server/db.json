@@ -1,0 +1,52 @@
+{
+  "monstruos": [
+    {
+      "id": 1,
+      "nombre": "Frankenstein",
+      "tipo": "zombie",
+      "alias": "Fran",
+      "miedo": "56",
+      "defensa": "crucifijo"
+    },
+    {
+      "id": 2,
+      "nombre": "La Momia",
+      "tipo": "esqueleto",
+      "alias": "Momi",
+      "miedo": "73",
+      "defensa": "pocion"
+    },
+    {
+      "id": 3,
+      "nombre": "Casper",
+      "tipo": "fantasma",
+      "alias": "caspi",
+      "miedo": "17",
+      "defensa": "estaca"
+    },
+    {
+      "id": 4,
+      "nombre": "Jeffry",
+      "tipo": "vampiro",
+      "alias": "Jef",
+      "miedo": "82",
+      "defensa": "pocion"
+    },
+    {
+      "id": 5,
+      "nombre": "Scarlata",
+      "tipo": "bruja",
+      "alias": "lata",
+      "miedo": "66",
+      "defensa": "pocion"
+    },
+    {
+      "nombre": "Juana",
+      "tipo": "bruja",
+      "alias": "juani",
+      "miedo": "66",
+      "defensa": "pocion",
+      "id": 6
+    }
+  ]
+}

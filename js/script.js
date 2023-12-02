@@ -1,6 +1,7 @@
 import { Monstruo, CargarAtributos } from "./Monstruo.js";
-import { ActualizarTabla } from "./Tabla.js";
+import { ActualizarTable } from "./Tabla.js";
 import { cargarSelect, ManejoBtns, CargarFormulario } from "./Formulario.js";
+import { cargarDatos } from "./fetch.js";
 
 //Formulario
 const selectTipo = document.querySelectorAll("select");
@@ -16,10 +17,16 @@ const $btnCancelar = document.getElementById("btnCancelar");
 $btnCancelar.style.backgroundImage = 'url("../icon/cancelar.png")';
 $btnCancelar.style.backgroundColor = "#f4787e";
 //Cargar tabla
-const monstruos = JSON.parse(localStorage.getItem("monstruos")) || [];
+// const monstruos = JSON.parse(localStorage.getItem("monstruos")) || [];
 const $seccionTala = document.getElementById("tabla");
-ActualizarTabla($seccionTala, monstruos);
-PromedioMiedo(monstruos);
+const $spinner = document.getElementById("spinner");
+
+function ActualizarTabla($seccionTala) {
+  cargarDatos(URL, $spinner, (monstruos) => {
+    ActualizarTable($seccionTala, monstruos);
+    PromedioMiedo(monstruos);
+  });
+}
 //ID
 let id;
 let selecSelccionado = "todos";
@@ -69,7 +76,7 @@ window.addEventListener("click", (e) => {
   } else if (e.target.matches("input[type = 'checkbox']")) {
     const tablaFiltrada = filtros();
 
-    ActualizarTabla($seccionTala, tablaFiltrada);
+    ActualizarTabla($seccionTala);
   }
 });
 

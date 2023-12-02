@@ -32,15 +32,16 @@ header {
   list-style: none;
 }
 
-.navbar a {
+.ancla {
   text-decoration: none;
   font-weight: 600;
   margin-right: 15px;
   color: #f28c35;
 }
 
-.navbar a:hover {
+.ancla:hover {
   color: #fce256;
+  cursor: pointer;
 }
 
 /*FIN HEADER NAVBAR*/
