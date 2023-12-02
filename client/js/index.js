@@ -2,10 +2,12 @@ import { ajaxGet } from "./ajax.js";
 import { CargarCards } from "./principal.js";
 
 const URL_DB = "http://localhost:3000/monstruos";
+
+//PAGINA PRINCIPAL
 const anclaPrincipal = document.getElementById("getMonstruos");
 
 anclaPrincipal.addEventListener("click", () => {
-  const url = "http://localhost:5500/html/monstruo.html";
+  const url = "http://localhost:5500/client/html/monstruo.html";
 
   const $spinner = document.getElementById("spinner");
 
@@ -24,4 +26,3 @@ anclaPrincipal.addEventListener("click", () => {
     CargarCards($main, URL_DB);
   });
 });
-//

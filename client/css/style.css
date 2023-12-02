@@ -21,6 +21,7 @@ header {
 
 .logo {
   display: flex;
+  cursor: pointer;
 }
 
 .logo img {
