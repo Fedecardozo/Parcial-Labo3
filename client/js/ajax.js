@@ -1,4 +1,4 @@
-// la url tiene que ir por parametro
+//Traer todos
 export const ajaxGet = (url, $img, call) => {
   $img.hidden = false;
 
@@ -22,18 +22,11 @@ export const ajaxGet = (url, $img, call) => {
   xhr.send();
 };
 
-//id por parametro
-const getMonstrussos = () => {
+//Traer uno
+const ajaxGetUno = (url, id) => {
   $img.hidden = false;
 
   const xhr = new XMLHttpRequest();
-
-  //Cada vez que cambia de estado
-  // xhr.onreadystatechange = ()=>{
-
-  // };
-
-  //Cada vez que cambia de estado
 
   xhr.addEventListener("readystatechange", () => {
     if (xhr.readyState == 4) {
@@ -47,20 +40,33 @@ const getMonstrussos = () => {
     }
   });
   //   xhr.open("GET", URL + "/" + id);
-  xhr.open("GET", URL + "/2");
+  xhr.open("GET", url + "/" + id);
   xhr.send();
 };
 
-//Create persona
-const getMonstsruos = () => {
-  $img.hidden = false;
-  const data = {
-    nombre: "Scarlata",
-    tipo: "bruja",
-    alias: "lata",
-    miedo: "66",
-    defensa: "pocion",
-  };
+//Create post
+export const ajaxPostCreate = (url, data) => {
+  // $img.hidden = false;
+
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener("readystatechange", () => {
+    if (xhr.readyState == 4) {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        //nada
+      } else {
+        console.error("Error: " + xhr.status + " " + xhr.statusText);
+      }
+      // $img.hidden = true;
+    }
+  });
+  xhr.open("POST", url);
+  xhr.setRequestHeader("Content-type", "application/json;charset=utf-8");
+  xhr.send(JSON.stringify(data));
+};
+
+//id por parametro
+export const ajaxPut = (url, data) => {
   const xhr = new XMLHttpRequest();
 
   xhr.addEventListener("readystatechange", () => {
@@ -71,11 +77,9 @@ const getMonstsruos = () => {
       } else {
         console.error("Errro: " + xhr.status + " " + xhr.statusText);
       }
-      $img.hidden = true;
     }
   });
-  //   xhr.open("GET", URL + "/" + id);
-  xhr.open("POST", URL);
+  xhr.open("PUT", url + "/" + data.id);
   xhr.setRequestHeader("Content-type", "application/json;charset=utf-8");
   xhr.send(JSON.stringify(data));
 };
@@ -100,36 +104,4 @@ const getMonstruoss = () => {
   //   xhr.open("GET", URL + "/" + id);
   xhr.open("DELETE", URL + "/7");
   xhr.send();
-};
-
-//id por parametro
-const getMonstruos = () => {
-  $img.hidden = false;
-
-  const data = {
-    id: 5,
-    nombre: "Scarlata",
-    tipo: "bruja",
-    alias: "lata",
-    miedo: "66",
-    defensa: "pocion",
-  };
-
-  const xhr = new XMLHttpRequest();
-
-  xhr.addEventListener("readystatechange", () => {
-    if (xhr.readyState == 4) {
-      if (xhr.status >= 200 && xhr.status < 300) {
-        const data = JSON.parse(xhr.responseText);
-        console.log(data);
-      } else {
-        console.error("Errro: " + xhr.status + " " + xhr.statusText);
-      }
-      $img.hidden = true;
-    }
-  });
-  //   xhr.open("GET", URL + "/" + id);
-  xhr.open("PUT", URL + "/" + data.id);
-  xhr.setRequestHeader("Content-type", "application/json;charset=utf-8");
-  xhr.send(JSON.stringify(data));
 };

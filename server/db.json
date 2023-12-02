@@ -47,6 +47,46 @@
       "miedo": "66",
       "defensa": "pocion",
       "id": 6
+    },
+    {
+      "nombre": "fefa",
+      "tipo": "vampiro",
+      "alias": "asdasd",
+      "miedo": "89",
+      "defensa": "plata",
+      "id": 7
+    },
+    {
+      "nombre": "fede",
+      "tipo": "hombre lobo",
+      "alias": "ads",
+      "miedo": "6",
+      "defensa": "pocion",
+      "id": 8
+    },
+    {
+      "nombre": "Messi",
+      "tipo": "fantasma",
+      "alias": "Mes",
+      "miedo": "79",
+      "defensa": "pocion",
+      "id": 9
+    },
+    {
+      "nombre": "nyew",
+      "tipo": "hombre lobo",
+      "alias": "nuebo",
+      "miedo": "59",
+      "defensa": "crucifijo",
+      "id": 12
+    },
+    {
+      "nombre": "fede",
+      "tipo": "zombie",
+      "alias": "asd",
+      "miedo": "63",
+      "defensa": "plata",
+      "id": 13
     }
   ]
 }

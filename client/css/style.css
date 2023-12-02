@@ -238,6 +238,23 @@ button:hover {
   padding: 3px;
 }
 
+.btnCancelar {
+  background-image: url("../icon/cancelar.png");
+  background-color: #f4787e;
+}
+.btnCancelar:hover {
+  background-color: #f4787ed6;
+  color: #fce256;
+}
+.btnEliminar {
+  background-image: url("../icon/borrar.png");
+  background-color: #d7273e;
+}
+.btnEliminar:hover {
+  background-color: #d7273ed2;
+  color: #fce256;
+}
+
 /*FIN MAIN FORM*/
 
 /*INICIO SECCION TABLA*/

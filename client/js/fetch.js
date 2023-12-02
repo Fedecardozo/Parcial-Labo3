@@ -17,22 +17,22 @@ export const fetchGet = (url, $img, call) => {
     });
 };
 
-// export const fetchGet = async (url, $spinner, call) => {
-//   $spinner.hidden = false;
+export const fetchGetAsyc = async (url, $spinner, call) => {
+  $spinner.hidden = false;
 
-//   try {
-//     const response = await fetch(url);
-//     if (!response.ok) {
-//       throw new Error(`${response.status} ${response.statusText}`);
-//     }
-//     call(response);
-//   } catch (err) {
-//     console.error("Error:", err);
-//     // throw err;
-//   } finally {
-//     $spinner.hidden = true;
-//   }
-// };
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`${response.status} ${response.statusText}`);
+    }
+    return await call(await response.json());
+  } catch (err) {
+    console.error("Error:", err);
+    // throw err;
+  } finally {
+    $spinner.hidden = true;
+  }
+};
 
 // export const cargarDatos = async (url, $spinner, call) => {
 //   try {

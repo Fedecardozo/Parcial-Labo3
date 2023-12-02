@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <title>Hallowen</title>
     <!-- <script type="module" src="../js/script.js"></script> -->
-    <script type="module" src="../js/index.js"></script>
     <link rel="stylesheet" href="../../server/node_modules/bootstrap/dist/css/bootstrap.min.css" />
-
     <link rel="stylesheet" href="../css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script type="module" src="../js/index.js"></script>
   </head>
   <body>
     <header>
@@ -74,10 +74,11 @@
             <label for="selectTipo"><img src="../icon/tipo.png" alt="fantasma" class="icon-img" /> Tipo</label>
             <select id="selectTipo"></select>
           </div>
+          <input type="text" id="txtId" hidden />
           <div class="cont-btns">
             <input type="submit" value="Guardar" />
-            <button id="btnEliminar" class="btn" hidden>Eliminar</button>
-            <button id="btnCancelar" class="btn" hidden>Cancelar</button>
+            <button id="btnEliminar" class="btn btnEliminar" hidden>Eliminar</button>
+            <button id="btnCancelar" class="btn btnCancelar" hidden>Cancelar</button>
           </div>
         </form>
       </fieldset>
@@ -150,7 +151,7 @@
     <footer>
       <nav>
         <ul class="navbar">
-          <li><a class="ancla" href="#">HOME</a></li>
+          <li><a class="ancla" href="./index.html">HOME</a></li>
           <li><a class="ancla" id="getMonstruos">MONSTRUOS</a></li>
           <li><a class="ancla" href="#">BLOG</a></li>
           <li><a class="ancla" href="#">CONTACTO</a></li>
