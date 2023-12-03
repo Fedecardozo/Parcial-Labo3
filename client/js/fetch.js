@@ -33,39 +33,3 @@ export const fetchGetAsyc = async (url, $spinner, call) => {
     $spinner.hidden = true;
   }
 };
-
-// export const cargarDatos = async (url, $spinner, call) => {
-//   try {
-//     const monstruosData = await getMonstruos(url, $spinner);
-//     call(monstruosData);
-//     // console.log(monstruosData);
-//   } catch (error) {
-//     console.error("Error al cargar datos:", error);
-//   }
-// };
-
-// export const get = async (url) => {
-//   try {
-//     const response = await fetch(url);
-//     if (!response.ok) {
-//       throw new Error(`${response.status} ${response.statusText}`);
-//     }
-
-//     const data = await response.json();
-//     return data;
-//   } catch (err) {
-//     console.error("Error:", err);
-//     throw err;
-//   } finally {
-//   }
-// };
-
-// export const obtenerDatos = async (url) => {
-//   try {
-//     const monstruosData = await get(url);
-//     return monstruosData;
-//     // console.log(monstruosData);
-//   } catch (error) {
-//     console.error("Error al cargar datos:", error);
-//   }
-// };

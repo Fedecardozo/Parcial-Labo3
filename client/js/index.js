@@ -4,7 +4,7 @@ import { axiosDelete } from "./axios.js";
 import { CargarCards } from "./principal.js";
 import { cargarSelect, ManejoBtns, CargarFormulario } from "./Formulario.js";
 import { Monstruo } from "./Monstruo.js";
-import { ActualizarTable } from "./Tabla.js";
+import { ActualizarTable, CrearTabla } from "./Tabla.js";
 
 const URL_DB = "http://localhost:3000/monstruos";
 const $spinner = document.getElementById("spinner");
@@ -17,13 +17,12 @@ cargarSelect(selectTipo[1]);
 //CARGAR TABLA
 const $seccionTabla = document.getElementById("tabla");
 async function actualizarTabla() {
-  // $seccionTabla.hidden = true;
   const monstruos = fetchGetAsyc(URL_DB, $spinner, (data) => {
     const monsters = data.sort((value, value2) => value2.miedo - value.miedo);
     ActualizarTable($seccionTabla, monsters);
+    PromedioMaxMin(monsters);
     return monsters;
   });
-  // $seccionTabla.hidden = false;
   return monstruos;
 }
 const jsonMonstruos = await actualizarTabla();
@@ -148,22 +147,26 @@ document.getElementById("selectFilterTipo").addEventListener("change", (e) => {
   $cheks.forEach((chek) => {
     ocultarColumnas(chek);
   });
-  PromedioMiedo(monstruosFiltrado);
+  PromedioMaxMin(monstruosFiltrado);
 });
 
 //FILTRAR ARRAY SEGUN SELEC
 function ObtenerArraySelec(selecSelccionado) {
   if (selecSelccionado === "todos") {
-    PromedioMiedo(jsonMonstruos);
-
     return jsonMonstruos;
   }
   const filtroTipo = jsonMonstruos.filter((obj) => {
     return obj.tipo === selecSelccionado;
   });
-  PromedioMiedo(filtroTipo);
 
   return filtroTipo;
+}
+
+//CALCULAR PROMEDIO MAX Y MIN
+function PromedioMaxMin(arrayMonstruos) {
+  PromedioMiedo(arrayMonstruos);
+  MiedoMaximo(arrayMonstruos);
+  MiedoMinimo(arrayMonstruos);
 }
 
 //PROMEDIO
@@ -174,7 +177,30 @@ function PromedioMiedo(arrayMonstruos) {
     promedio = suma / arrayMonstruos.length;
   }
   // console.log(suma / arrayMonstruos.length);
-  document.getElementById("txtPromedio").value = promedio;
+  document.getElementById("txtPromedio").value = promedio.toFixed(2);
 }
 
-//Ordenarlo por miedo de manera decente con sort
+//MIEDO MAXIMO
+function MiedoMaximo(arrayMonstruos) {
+  if (Array.isArray(arrayMonstruos) && arrayMonstruos.length) {
+    const max = arrayMonstruos
+      .map((monster) => parseInt(monster.miedo))
+      .reduce((acu, el) => {
+        return acu > el ? acu : el;
+      });
+
+    document.getElementById("txtMaximo").value = max;
+  }
+}
+
+//MIEDO MINIMO
+function MiedoMinimo(arrayMonstruos) {
+  if (Array.isArray(arrayMonstruos) && arrayMonstruos.length) {
+    const min = arrayMonstruos
+      .map((monster) => parseInt(monster.miedo))
+      .reduce((acu, el) => {
+        return acu < el ? acu : el;
+      });
+    document.getElementById("txtMinimo").value = min;
+  }
+}

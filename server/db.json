@@ -49,14 +49,6 @@
       "id": 6
     },
     {
-      "nombre": "fefa",
-      "tipo": "vampiro",
-      "alias": "asdasd",
-      "miedo": "89",
-      "defensa": "plata",
-      "id": 7
-    },
-    {
       "nombre": "fede",
       "tipo": "hombre lobo",
       "alias": "ads",
@@ -87,6 +79,14 @@
       "miedo": "63",
       "defensa": "plata",
       "id": 13
+    },
+    {
+      "nombre": "Frankenstein2",
+      "tipo": "zombie",
+      "alias": "franki",
+      "miedo": "100",
+      "defensa": "crucifijo",
+      "id": 14
     }
   ]
 }
