@@ -166,3 +166,33 @@ function PromedioMiedo(arrayMonstruos) {
   // console.log(suma / arrayMonstruos.length);
   document.getElementById("txtPromedio").value = promedio;
 }
+
+/*//SELECT TIPO
+document.getElementById("selectFilterTipo").addEventListener("change", (e) => {
+  const seleccion = e.target.value;
+  const tr = document.querySelectorAll("tr");
+
+  //Arranco en el indice uno, asi no empiezo por la <th>
+  for (let index = 1; index < tr.length; index++) {
+    //Fila completa
+    const fila = tr[index];
+
+    //Muestro todos
+    if (seleccion === "todos") {
+      fila.style.display = "table-row";
+    } else {
+      //Indice de donde coincide la seleccion
+      const indice = fila.innerHTML.indexOf(`<td>${seleccion}</td>`);
+
+      //Si el indice es menor a 0, oculto lo que no fue seleccionado
+      if (indice < 0) {
+        fila.style.display = "none";
+      }
+      //Si es mayor a 0 muestro la fila que fue seleccionado
+      else {
+        fila.style.display = "table-row";
+      }
+    }
+  }
+});
+*/
