@@ -19,8 +19,9 @@ const $seccionTabla = document.getElementById("tabla");
 async function actualizarTabla() {
   // $seccionTabla.hidden = true;
   const monstruos = fetchGetAsyc(URL_DB, $spinner, (data) => {
-    ActualizarTable($seccionTabla, data);
-    return data;
+    const monsters = data.sort((value, value2) => value2.miedo - value.miedo);
+    ActualizarTable($seccionTabla, monsters);
+    return monsters;
   });
   // $seccionTabla.hidden = false;
   return monstruos;
