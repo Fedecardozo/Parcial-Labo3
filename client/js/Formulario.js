@@ -35,3 +35,18 @@ export const CargarFormulario = ($formulario, monstruo) => {
   $formulario.miedo.value = monstruo.miedo;
   $formulario.selectTipo.value = monstruo.tipo;
 };
+
+export const cargarDrop = (drop) => {
+  // const selectTipo = document.getElementById("selectTipo");
+
+  const tipos = JSON.parse(localStorage.getItem("tipos"));
+  const fragment = document.createDocumentFragment();
+  tipos.forEach((tipo) => {
+    const option = document.createElement("li");
+    option.textContent = tipo;
+    option.classList = "dropdown-item pointer";
+    // console.log(option.textContent);
+    fragment.appendChild(option);
+  });
+  drop.appendChild(fragment);
+};

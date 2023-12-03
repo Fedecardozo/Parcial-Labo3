@@ -2,7 +2,7 @@ import { ajaxGet, ajaxPostCreate, ajaxPut } from "./ajax.js";
 import { fetchGetAsyc } from "./fetch.js";
 import { axiosDelete } from "./axios.js";
 import { CargarCards } from "./principal.js";
-import { cargarSelect, ManejoBtns, CargarFormulario } from "./Formulario.js";
+import { cargarSelect, ManejoBtns, CargarFormulario, cargarDrop } from "./Formulario.js";
 import { Monstruo } from "./Monstruo.js";
 import { ActualizarTable, CrearTabla } from "./Tabla.js";
 
@@ -12,7 +12,7 @@ const $spinner = document.getElementById("spinner");
 //CARGAR SELECT
 const selectTipo = document.querySelectorAll("select");
 cargarSelect(selectTipo[0]);
-cargarSelect(selectTipo[1]);
+cargarDrop(document.getElementById("selectFilterTipo"));
 
 //CARGAR TABLA
 const $seccionTabla = document.getElementById("tabla");
@@ -59,11 +59,15 @@ const $txtId = document.getElementById("txtId");
 //CARGAR ULTIMA SELECCION
 if (localStorage.getItem("seleccion")) {
   const id = localStorage.getItem("seleccion");
-  CargarFormulario(
-    $form,
-    jsonMonstruos.find((value) => value.id == id)
-  );
+  const monster = jsonMonstruos.find((value) => value.id == id);
+
+  if (monster) {
+    $txtId.value = id;
+    CargarFormulario($form, monster);
+    ManejoBtns($btnSubmit, $btnEliminar, $btnCancelar, false);
+  }
 }
+
 //GUARDAR MODIFICAR
 $form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -77,15 +81,8 @@ $form.addEventListener("submit", (e) => {
   }
   //MODIFICAR
   else if ($btnSubmit.value === "Modificar") {
-    const monstruoUpdate = new Monstruo(
-      parseInt(txtId.value),
-      nombre.value,
-      selectTipo.value,
-      alias.value,
-      miedo.value,
-      defensa.value
-    );
-
+    const monstruoUpdate = new Monstruo(nombre.value, selectTipo.value, alias.value, miedo.value, defensa.value);
+    monstruoUpdate.setId(parseInt(txtId.value));
     ajaxPut(URL_DB, monstruoUpdate);
     ManejoBtns($btnSubmit, $btnEliminar, $btnCancelar, true);
   }
@@ -111,8 +108,9 @@ $btnCancelar.addEventListener("click", (e) => {
 
 //CAMBIAR BOTONES / OCULTAR COLUMNAS
 window.addEventListener("click", (e) => {
+  const target = e.target;
   //OBTENER CELDA SELECIONADA
-  if (e.target.matches("td")) {
+  if (target.matches("td")) {
     let id = e.target.parentElement.dataset.id;
     const selectedMonstruo = jsonMonstruos.find((value) => value.id == id);
     CargarFormulario($form, selectedMonstruo);
@@ -121,8 +119,19 @@ window.addEventListener("click", (e) => {
     localStorage.setItem("seleccion", id);
   }
   //OCULTAR COLUMNAS
-  else if (e.target.matches("input[type = 'checkbox']")) {
+  else if (target.matches("input[type = 'checkbox']")) {
     ocultarColumnas(e.target);
+  }
+  //DROP FILTRO SELECT
+  else if (target.matches("li") && target.attributes.class.nodeValue === "dropdown-item pointer") {
+    // console.log(target.innerText);
+    const monstruosFiltrado = ObtenerArraySelec(target.innerText);
+    ActualizarTable($seccionTabla, monstruosFiltrado);
+    const $cheks = document.querySelectorAll("input[type = 'checkbox']");
+    $cheks.forEach((chek) => {
+      ocultarColumnas(chek);
+    });
+    PromedioMaxMin(monstruosFiltrado);
   }
 });
 
@@ -147,17 +156,6 @@ function ocultarColumnas(chek) {
     }
   }
 }
-
-//MOSTRAR SEGUN SELECT TIPO (FILTRO)
-document.getElementById("selectFilterTipo").addEventListener("change", (e) => {
-  const monstruosFiltrado = ObtenerArraySelec(e.target.value);
-  ActualizarTable($seccionTabla, monstruosFiltrado);
-  const $cheks = document.querySelectorAll("input[type = 'checkbox']");
-  $cheks.forEach((chek) => {
-    ocultarColumnas(chek);
-  });
-  PromedioMaxMin(monstruosFiltrado);
-});
 
 //FILTRAR ARRAY SEGUN SELEC
 function ObtenerArraySelec(selecSelccionado) {

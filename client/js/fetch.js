@@ -28,7 +28,7 @@ export const fetchGetAsyc = async (url, $spinner, call) => {
     return await call(await response.json());
   } catch (err) {
     console.error("Error:", err);
-    // throw err;
+    return await call([]);
   } finally {
     $spinner.hidden = true;
   }

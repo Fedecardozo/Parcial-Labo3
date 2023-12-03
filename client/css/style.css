@@ -187,7 +187,8 @@ input[type="range"]::-webkit-slider-thumb {
   margin-top: -7px; /* Alinea el thumb en el centro verticalmente */
 }
 
-select {
+select,
+.select {
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
@@ -255,6 +256,14 @@ button:hover {
   color: #fce256;
 }
 
+.pointer {
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.pointer:hover {
+  background-color: #f6bb7b;
+}
 /*FIN MAIN FORM*/
 
 /*INICIO SECCION TABLA*/

@@ -84,55 +84,75 @@
       </fieldset>
 
       <section class="container" id="filtro">
-        <form>
-          <div class="row bg-secondary mb-4">
+        <form class="bg-secondary p-3 mb-2">
+          <div class="row mb-2">
             <div class="col-lg-3 col-md-6 col-sm-12">
-              <label class="form-label">
+              <!-- <label class="form-label">
                 Tipo
                 <select name="tipo" class="form-select m-3 text-center" id="selectFilterTipo">
                   <option value="todos" selected>Todos</option>
-                </select>
-              </label>
+                </select> 
+              </label>-->
+              <div class="dropdown">
+                <button class="select dropdown-toggle" type="button" data-bs-toggle="dropdown">Tipo</button>
+                <ul class="dropdown-menu text-center" id="selectFilterTipo">
+                  <li class="dropdown-item pointer">todos</li>
+                </ul>
+              </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12">
               <label class="form-label">
                 Promedio
-                <input type="text" class="form-control m-3 text-center" id="txtPromedio" disabled />
+                <input type="text" class="form-control m-1 text-center" id="txtPromedio" disabled />
               </label>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12">
               <label class="form-label">
                 Maximo
-                <input type="text" class="form-control m-3 text-center" id="txtMaximo" disabled />
+                <input type="text" class="form-control m-1 text-center" id="txtMaximo" disabled />
               </label>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12">
               <label class="form-label">
                 Minimo
-                <input type="text" class="form-control m-3 text-center" id="txtMinimo" disabled />
+                <input type="text" class="form-control m-1 text-center" id="txtMinimo" disabled />
               </label>
             </div>
           </div>
 
-          <div class="row bg-secondary-subtle mb-4">
-            <div class="col mt-3 mb-2">
-              <div class="form-check">
-                <input type="checkbox" checked class="form-check-input" name="atributos" id="chNombre" value="nombre" />
-                <label class="form-check-label" for="chNombre"> Nombre </label>
-              </div>
-            </div>
-            <div class="col mt-3 mb-2">
-              <div class="form-check">
-                <input type="checkbox" checked class="form-check-input" name="atributos" id="chAlias" value="alias" />
-                <label class="form-check-label" for="chAlias"> Alias </label>
-              </div>
-            </div>
-            <div class="col mt-3 mb-2">
+          <div class="row">
+            <div class="col">
               <div class="form-check">
                 <input
                   type="checkbox"
                   checked
-                  class="form-check-input"
+                  class="form-check-input m-1"
+                  name="atributos"
+                  id="chNombre"
+                  value="nombre"
+                />
+                <label class="form-check-label" for="chNombre"> Nombre </label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  checked
+                  class="form-check-input m-1"
+                  name="atributos"
+                  id="chAlias"
+                  value="alias"
+                />
+                <label class="form-check-label" for="chAlias"> Alias </label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  checked
+                  class="form-check-input m-1"
                   name="atributos"
                   id="chDefensa"
                   value="defensa"
@@ -140,15 +160,22 @@
                 <label class="form-check-label" for="chDefensa"> Defensa </label>
               </div>
             </div>
-            <div class="col mt-3 mb-2">
+            <div class="col">
               <div class="form-check">
-                <input type="checkbox" checked class="form-check-input" name="atributos" id="chMiedo" value="miedo" />
+                <input
+                  type="checkbox"
+                  checked
+                  class="form-check-input m-1"
+                  name="atributos"
+                  id="chMiedo"
+                  value="miedo"
+                />
                 <label class="form-check-label" for="chMiedo">Miedo </label>
               </div>
             </div>
-            <div class="col mt-3 mb-2">
+            <div class="col">
               <div class="form-check">
-                <input type="checkbox" checked class="form-check-input" name="atributos" id="chTipo" value="tipo" />
+                <input type="checkbox" checked class="form-check-input m-1" name="atributos" id="chTipo" value="tipo" />
                 <label class="form-check-label" for="chTipo"> Tipo </label>
               </div>
             </div>
@@ -171,5 +198,6 @@
       </nav>
       <p>LABORATORIO III - TODOS LOS DERECHOS RESERVADOS 2023 ©</p>
     </footer>
+    <script src="../../server/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
