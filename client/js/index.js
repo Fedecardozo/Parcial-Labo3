@@ -118,7 +118,7 @@ $form.addEventListener("submit", (e) => {
   $form.reset();
 });
 
-//Boton eliminar
+//BOTON ELIMINAR
 $btnEliminar.addEventListener("click", (e) => {
   e.preventDefault();
   //Aca elimino con la base de datos AXIOS
@@ -127,9 +127,38 @@ $btnEliminar.addEventListener("click", (e) => {
   $form.reset();
 });
 
-//Boton cancelar
+//BOTON CANCELAR
 $btnCancelar.addEventListener("click", (e) => {
   e.preventDefault();
   ManejoBtns($btnSubmit, $btnEliminar, $btnCancelar, true);
   $form.reset();
+});
+
+//SELECT TIPO
+document.getElementById("selectFilterTipo").addEventListener("change", (e) => {
+  const seleccion = e.target.value;
+  const tr = document.querySelectorAll("tr");
+
+  //Arranco en el indice uno, asi no empiezo por la <th>
+  for (let index = 1; index < tr.length; index++) {
+    //Fila completa
+    const fila = tr[index];
+
+    //Muestro todos
+    if (seleccion === "todos") {
+      fila.style.display = "table-row";
+    } else {
+      //Indice de donde coincide la seleccion
+      const indice = fila.innerHTML.indexOf(`<td>${seleccion}</td>`);
+
+      //Si el indice es menor a 0, oculto lo que no fue seleccionado
+      if (indice < 0) {
+        fila.style.display = "none";
+      }
+      //Si es mayor a 0 muestro la fila que fue seleccionado
+      else {
+        fila.style.display = "table-row";
+      }
+    }
+  }
 });
