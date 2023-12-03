@@ -56,6 +56,14 @@ const $btnCancelar = document.getElementById("btnCancelar");
 const $btnEliminar = document.getElementById("btnEliminar");
 const $txtId = document.getElementById("txtId");
 
+//CARGAR ULTIMA SELECCION
+if (localStorage.getItem("seleccion")) {
+  const id = localStorage.getItem("seleccion");
+  CargarFormulario(
+    $form,
+    jsonMonstruos.find((value) => value.id == id)
+  );
+}
 //GUARDAR MODIFICAR
 $form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -110,6 +118,7 @@ window.addEventListener("click", (e) => {
     CargarFormulario($form, selectedMonstruo);
     ManejoBtns($btnSubmit, $btnEliminar, $btnCancelar, false);
     $txtId.value = id;
+    localStorage.setItem("seleccion", id);
   }
   //OCULTAR COLUMNAS
   else if (e.target.matches("input[type = 'checkbox']")) {
