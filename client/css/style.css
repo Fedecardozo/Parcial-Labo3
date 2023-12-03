@@ -330,3 +330,8 @@ footer p {
     width: 87vw;
   }
 }
+
+/* td:nth-child(1),
+th:nth-child(1) {
+  display: none;
+} */

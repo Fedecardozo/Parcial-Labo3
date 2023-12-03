@@ -56,8 +56,9 @@ const $btnCancelar = document.getElementById("btnCancelar");
 const $btnEliminar = document.getElementById("btnEliminar");
 const $txtId = document.getElementById("txtId");
 
-//CAMBIAR BOTONES
+//CAMBIAR BOTONES / OCULTAR COLUMNAS
 window.addEventListener("click", (e) => {
+  //OBTENER CELDA SELECIONADA
   if (e.target.matches("td")) {
     let id = e.target.parentElement.dataset.id;
     const selectedMonstruo = jsonMonstruos.find((value) => value.id == id);
@@ -65,8 +66,34 @@ window.addEventListener("click", (e) => {
     ManejoBtns($btnSubmit, $btnEliminar, $btnCancelar, false);
     $txtId.value = id;
   }
+  //OCULTAR COLUMNAS
+  else if (e.target.matches("input[type = 'checkbox']")) {
+    const th = document.querySelectorAll("th");
+    if (th.length) {
+      for (let index = 0; index < th.length; index++) {
+        if (th[index].textContent === e.target.value) {
+          th[index].style.display = "none";
+          const td = document.querySelectorAll(`td:nth-child(${index + 1})`);
+          td.forEach((col) => {
+            col.style.display = "none";
+          });
+          break;
+        }
+      }
+    }
+  }
 });
 
+const obtenerIndex = (value) => {
+  const th = document.querySelectorAll("th");
+  if (th.length) {
+    for (let index = 0; index < th.length; index++) {
+      if (th[index].textContent === value) {
+        return index + 1;
+      }
+    }
+  }
+};
 //GUARDAR MODIFICAR
 $form.addEventListener("submit", (e) => {
   e.preventDefault();
