@@ -72,10 +72,15 @@ window.addEventListener("click", (e) => {
     if (th.length) {
       for (let index = 0; index < th.length; index++) {
         if (th[index].textContent === e.target.value) {
-          th[index].style.display = "none";
           const td = document.querySelectorAll(`td:nth-child(${index + 1})`);
           td.forEach((col) => {
-            col.style.display = "none";
+            if (e.target.checked) {
+              th[index].style.display = "table-cell";
+              col.style.display = "table-cell";
+            } else {
+              th[index].style.display = "none";
+              col.style.display = "none";
+            }
           });
           break;
         }
@@ -84,16 +89,6 @@ window.addEventListener("click", (e) => {
   }
 });
 
-const obtenerIndex = (value) => {
-  const th = document.querySelectorAll("th");
-  if (th.length) {
-    for (let index = 0; index < th.length; index++) {
-      if (th[index].textContent === value) {
-        return index + 1;
-      }
-    }
-  }
-};
 //GUARDAR MODIFICAR
 $form.addEventListener("submit", (e) => {
   e.preventDefault();
