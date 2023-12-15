@@ -54,10 +54,10 @@ export const ajaxPut = (url, data, $spinner, $table) => {
   xhr.addEventListener("readystatechange", () => {
     if (xhr.readyState == 4) {
       if (xhr.status >= 200 && xhr.status < 300) {
-        const data = JSON.parse(xhr.responseText);
+        const json = JSON.parse(xhr.responseText);
         $spinner.hidden = true;
         $table.hidden = false;
-        console.log(data);
+        console.log(json);
       } else {
         console.error("Error: " + xhr.status + " " + xhr.statusText);
       }

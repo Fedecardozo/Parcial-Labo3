@@ -4,7 +4,7 @@ import { axiosDelete } from "./axios.js";
 import { CargarCards } from "./principal.js";
 import { cargarSelect, ManejoBtns, CargarFormulario, cargarDrop } from "./Formulario.js";
 import { Monstruo } from "./Monstruo.js";
-import { ActualizarTable, CrearTabla } from "./Tabla.js";
+import { ActualizarTable } from "./Tabla.js";
 
 const URL_DB = "http://localhost:3000/monstruos";
 const $spinner = document.getElementById("spinner");
@@ -16,16 +16,11 @@ cargarDrop(document.getElementById("selectFilterTipo"));
 
 //CARGAR TABLA
 const $seccionTabla = document.getElementById("tabla");
-async function actualizarTabla() {
-  const monstruos = fetchGetAsyc(URL_DB, $spinner, (data) => {
-    const monsters = data.sort((value, value2) => value2.miedo - value.miedo);
-    ActualizarTable($seccionTabla, monsters);
-    PromedioMaxMin(monsters);
-    return monsters;
-  });
-  return monstruos;
-}
-const jsonMonstruos = await actualizarTabla();
+const jsonMonstruos = await fetchGetAsyc(URL_DB, $spinner, (data) => {
+  ActualizarTable($seccionTabla, data);
+  PromedioMaxMin(data);
+  return data;
+});
 
 //PAGINA PRINCIPAL
 const anclaPrincipal = document.getElementById("getMonstruos");
@@ -75,7 +70,9 @@ $form.addEventListener("submit", (e) => {
 
   //GUARDAR
   if ($btnSubmit.value === "Guardar") {
+    let id = jsonMonstruos.reduce((maxId, objeto) => Math.max(maxId, objeto.id), -Infinity);
     const monstruoAlta = new Monstruo(nombre.value, selectTipo.value, alias.value, miedo.value, defensa.value);
+    monstruoAlta.setId(parseInt(id + 1));
     ajaxPostCreate(URL_DB, $spinner, monstruoAlta, $seccionTabla);
     monstruoCreate(monstruoAlta);
   }

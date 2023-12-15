@@ -49,28 +49,12 @@
       "id": 6
     },
     {
-      "nombre": "Messi",
-      "tipo": "fantasma",
-      "alias": "Mes",
-      "miedo": "79",
-      "defensa": "pocion",
-      "id": 9
-    },
-    {
       "nombre": "fede",
       "tipo": "zombie",
       "alias": "asd",
       "miedo": "63",
       "defensa": "plata",
       "id": 13
-    },
-    {
-      "nombre": "Fede",
-      "tipo": "hombre lobo",
-      "alias": "Fico",
-      "miedo": "6",
-      "defensa": "estaca",
-      "id": 14
     },
     {
       "nombre": "Sherk",

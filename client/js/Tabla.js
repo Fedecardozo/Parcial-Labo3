@@ -52,6 +52,7 @@ export const ActualizarTable = (contenedor, data) => {
   }
   //Loader
   if (data.length) {
+    data.sort((value, value2) => value2.miedo - value.miedo);
     contenedor.appendChild(CrearTabla(data));
   }
 };
