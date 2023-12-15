@@ -22,6 +22,8 @@ const jsonMonstruos = await fetchGetAsyc(URL_DB, $spinner, (data) => {
   return data;
 });
 
+cargarCheks();
+
 //PAGINA PRINCIPAL
 const anclaPrincipal = document.getElementById("getMonstruos");
 
@@ -120,6 +122,13 @@ window.addEventListener("click", (e) => {
   //OCULTAR COLUMNAS
   else if (target.matches("input[type = 'checkbox']")) {
     ocultarColumnas(e.target);
+    const arrayChek = [];
+    document.querySelectorAll("input[type = 'checkbox']").forEach((chek) => {
+      if (!chek.checked) {
+        arrayChek.push(chek.value);
+      }
+    });
+    localStorage.setItem("cheks", JSON.stringify(arrayChek));
   }
   //DROP FILTRO SELECT
   else if (target.matches("li") && target.attributes.class.nodeValue === "dropdown-item pointer") {
@@ -229,4 +238,17 @@ function MonstruoUpdate(monstruo) {
 function monstruoCreate(newMonstruo) {
   jsonMonstruos.push(newMonstruo);
   ActualizarTable($seccionTabla, jsonMonstruos);
+}
+
+//Cheks
+function cargarCheks() {
+  const cheks = JSON.parse(localStorage.getItem("cheks"));
+  cheks.forEach((chek) => {
+    document.querySelectorAll("input[type = 'checkbox']").forEach((chekbox) => {
+      if (chek == chekbox.value) {
+        chekbox.checked = false;
+        ocultarColumnas(chekbox);
+      }
+    });
+  });
 }

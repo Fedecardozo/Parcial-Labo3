@@ -63,6 +63,14 @@
       "miedo": "91",
       "defensa": "crucifijo",
       "id": 15
+    },
+    {
+      "nombre": "Pie grande",
+      "tipo": "hombre lobo",
+      "alias": "piecito",
+      "miedo": "98",
+      "defensa": "crucifijo",
+      "id": 16
     }
   ]
 }
