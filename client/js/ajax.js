@@ -23,19 +23,21 @@ export const ajaxGet = (url, $img, call) => {
 };
 
 //Create post
-export const ajaxPostCreate = (url, data) => {
-  // $img.hidden = false;
+export const ajaxPostCreate = (url, $img, data, $table) => {
+  $img.hidden = false;
+  $table.hidden = true;
 
   const xhr = new XMLHttpRequest();
 
   xhr.addEventListener("readystatechange", () => {
     if (xhr.readyState == 4) {
       if (xhr.status >= 200 && xhr.status < 300) {
-        //nada
+        // alert(data);
       } else {
         console.error("Error: " + xhr.status + " " + xhr.statusText);
       }
-      // $img.hidden = true;
+      $img.hidden = true;
+      $table.hidden = false;
     }
   });
   xhr.open("POST", url);
@@ -44,16 +46,20 @@ export const ajaxPostCreate = (url, data) => {
 };
 
 //Modificar put obtiene el id de la data
-export const ajaxPut = (url, data) => {
+export const ajaxPut = (url, data, $spinner, $table) => {
   const xhr = new XMLHttpRequest();
+  $spinner.hidden = false;
+  $table.hidden = true;
 
   xhr.addEventListener("readystatechange", () => {
     if (xhr.readyState == 4) {
       if (xhr.status >= 200 && xhr.status < 300) {
         const data = JSON.parse(xhr.responseText);
+        $spinner.hidden = true;
+        $table.hidden = false;
         console.log(data);
       } else {
-        console.error("Errro: " + xhr.status + " " + xhr.statusText);
+        console.error("Error: " + xhr.status + " " + xhr.statusText);
       }
     }
   });

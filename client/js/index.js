@@ -31,8 +31,7 @@ const jsonMonstruos = await actualizarTabla();
 const anclaPrincipal = document.getElementById("getMonstruos");
 
 anclaPrincipal.addEventListener("click", () => {
-  const url = "http://localhost:5500/client/html/monstruo.html";
-
+  const url = "http://localhost:5500/html/monstruo.html";
   ajaxGet(url, $spinner, (res) => {
     const parser = new DOMParser();
 
@@ -77,14 +76,15 @@ $form.addEventListener("submit", (e) => {
   //GUARDAR
   if ($btnSubmit.value === "Guardar") {
     const monstruoAlta = new Monstruo(nombre.value, selectTipo.value, alias.value, miedo.value, defensa.value);
-    ajaxPostCreate(URL_DB, monstruoAlta);
+    ajaxPostCreate(URL_DB, $spinner, monstruoAlta, $seccionTabla);
+    monstruoCreate(monstruoAlta);
   }
   //MODIFICAR
   else if ($btnSubmit.value === "Modificar") {
     const monstruoUpdate = new Monstruo(nombre.value, selectTipo.value, alias.value, miedo.value, defensa.value);
     monstruoUpdate.setId(parseInt(txtId.value));
-    ajaxPut(URL_DB, monstruoUpdate);
-    ManejoBtns($btnSubmit, $btnEliminar, $btnCancelar, true);
+    ajaxPut(URL_DB, monstruoUpdate, $spinner, $seccionTabla);
+    MonstruoUpdate(monstruoUpdate);
   }
 
   $form.reset();
@@ -94,8 +94,10 @@ $form.addEventListener("submit", (e) => {
 $btnEliminar.addEventListener("click", (e) => {
   e.preventDefault();
   //Aca elimino con la base de datos AXIOS
-  axiosDelete(URL_DB, $txtId.value);
+  axiosDelete(URL_DB, $spinner, $txtId.value, $seccionTabla);
+  monstruoDelete($txtId.value);
   ManejoBtns($btnSubmit, $btnEliminar, $btnCancelar, true);
+
   $form.reset();
 });
 
@@ -210,4 +212,24 @@ function MiedoMinimo(arrayMonstruos) {
       });
     document.getElementById("txtMinimo").value = min;
   }
+}
+
+// ABM Array json
+
+function monstruoDelete(idMonstruo) {
+  let index = jsonMonstruos.findIndex((value) => value.id == idMonstruo);
+  jsonMonstruos.splice(index, 1);
+  ActualizarTable($seccionTabla, jsonMonstruos);
+}
+
+function MonstruoUpdate(monstruo) {
+  let index = jsonMonstruos.findIndex((value) => value.id == monstruo.id);
+  jsonMonstruos.splice(index, 1, monstruo);
+  ManejoBtns($btnSubmit, $btnEliminar, $btnCancelar, true);
+  ActualizarTable($seccionTabla, jsonMonstruos);
+}
+
+function monstruoCreate(newMonstruo) {
+  jsonMonstruos.push(newMonstruo);
+  ActualizarTable($seccionTabla, jsonMonstruos);
 }

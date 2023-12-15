@@ -9,12 +9,12 @@
       "defensa": "crucifijo"
     },
     {
-      "id": 2,
       "nombre": "La Momia",
       "tipo": "esqueleto",
       "alias": "Momi",
-      "miedo": "73",
-      "defensa": "pocion"
+      "miedo": "84",
+      "defensa": "pocion",
+      "id": 2
     },
     {
       "id": 3,
@@ -49,28 +49,12 @@
       "id": 6
     },
     {
-      "nombre": "fede",
-      "tipo": "hombre lobo",
-      "alias": "ads",
-      "miedo": "6",
-      "defensa": "pocion",
-      "id": 8
-    },
-    {
       "nombre": "Messi",
       "tipo": "fantasma",
       "alias": "Mes",
       "miedo": "79",
       "defensa": "pocion",
       "id": 9
-    },
-    {
-      "nombre": "nyew",
-      "tipo": "hombre lobo",
-      "alias": "nuebo",
-      "miedo": "59",
-      "defensa": "crucifijo",
-      "id": 12
     },
     {
       "nombre": "fede",
@@ -81,12 +65,20 @@
       "id": 13
     },
     {
-      "nombre": "Frankenstein2",
-      "tipo": "zombie",
-      "alias": "franki",
-      "miedo": "100",
-      "defensa": "crucifijo",
+      "nombre": "Fede",
+      "tipo": "hombre lobo",
+      "alias": "Fico",
+      "miedo": "6",
+      "defensa": "estaca",
       "id": 14
+    },
+    {
+      "nombre": "Sherk",
+      "tipo": "zombie",
+      "alias": "Ogro",
+      "miedo": "91",
+      "defensa": "crucifijo",
+      "id": 15
     }
   ]
 }
