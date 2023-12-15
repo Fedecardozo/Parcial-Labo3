@@ -24,6 +24,24 @@ const jsonMonstruos = await fetchGetAsyc(URL_DB, $spinner, (data) => {
 
 cargarCheks();
 
+//Cargar grafico
+
+const ids = JSON.parse(localStorage.getItem("ids")) || [];
+let frecuencias = {};
+
+ids.forEach((id) => {
+  frecuencias[id] = (frecuencias[id] || 0) + 1;
+});
+const arrayDePares = Object.entries(frecuencias);
+arrayDePares.sort((a, b) => b[1] - a[1]);
+
+const tresMasAlto = arrayDePares.slice(0, 3);
+const monster = jsonMonstruos.find((value) => value.id == tresMasAlto[0][0]);
+const monster2 = jsonMonstruos.find((value) => value.id == tresMasAlto[1][0]);
+const monster3 = jsonMonstruos.find((value) => value.id == tresMasAlto[2][0]);
+
+cargarChart(monster.nombre, monster2.nombre, monster3.nombre, tresMasAlto[0][1], tresMasAlto[1][1], tresMasAlto[2][1]);
+
 //PAGINA PRINCIPAL
 const anclaPrincipal = document.getElementById("getMonstruos");
 
@@ -118,6 +136,8 @@ window.addEventListener("click", (e) => {
     ManejoBtns($btnSubmit, $btnEliminar, $btnCancelar, false);
     $txtId.value = id;
     localStorage.setItem("seleccion", id);
+    ids.push(parseInt(id));
+    localStorage.setItem("ids", JSON.stringify(ids));
   }
   //OCULTAR COLUMNAS
   else if (target.matches("input[type = 'checkbox']")) {
@@ -250,5 +270,33 @@ function cargarCheks() {
         ocultarColumnas(chekbox);
       }
     });
+  });
+}
+
+function cargarChart(mon1, mon2, mon3, num1, num2, num3) {
+  let ctx = document.getElementById("myChart").getContext("2d");
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: [mon1, mon2, mon3],
+      datasets: [
+        {
+          label: "Num datos",
+          data: [num1, num2, num3],
+          backgroundColor: ["rgb(66,134,244)", "rgb(74,135,72)", "rgb(229,89,50)"],
+        },
+      ],
+    },
+    options: {
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+            },
+          },
+        ],
+      },
+    },
   });
 }

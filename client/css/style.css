@@ -344,3 +344,8 @@ footer p {
 th:nth-child(1) {
   display: none;
 } */
+
+canvas {
+  width: 600px;
+  height: 600px;
+}
