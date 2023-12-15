@@ -271,7 +271,7 @@ function monstruoCreate(newMonstruo) {
 
 //Cheks
 function cargarCheks() {
-  const cheks = JSON.parse(localStorage.getItem("cheks"));
+  const cheks = JSON.parse(localStorage.getItem("cheks")) || [];
   cheks.forEach((chek) => {
     document.querySelectorAll("input[type = 'checkbox']").forEach((chekbox) => {
       if (chek == chekbox.value) {
