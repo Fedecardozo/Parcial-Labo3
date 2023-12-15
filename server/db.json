@@ -2,6 +2,7 @@
   "monstruos": [
     {
       "id": 1,
+      "fecha": 1702681261793,
       "nombre": "Frankenstein",
       "tipo": "zombie",
       "alias": "Fran",
@@ -9,6 +10,7 @@
       "defensa": "crucifijo"
     },
     {
+      "fecha": 1702681261793,
       "nombre": "La Momia",
       "tipo": "esqueleto",
       "alias": "Momi",
@@ -18,6 +20,7 @@
     },
     {
       "id": 3,
+      "fecha": 1702681261793,
       "nombre": "Casper",
       "tipo": "fantasma",
       "alias": "caspi",
@@ -26,6 +29,7 @@
     },
     {
       "id": 4,
+      "fecha": 1702681261793,
       "nombre": "Jeffry",
       "tipo": "vampiro",
       "alias": "Jef",
@@ -34,6 +38,7 @@
     },
     {
       "id": 5,
+      "fecha": 1702681261793,
       "nombre": "Scarlata",
       "tipo": "bruja",
       "alias": "lata",
@@ -43,12 +48,14 @@
     {
       "nombre": "Juana",
       "tipo": "bruja",
-      "alias": "juani",
+      "fecha": 1702682864420,
+      "alias": "juania",
       "miedo": "66",
       "defensa": "pocion",
       "id": 6
     },
     {
+      "fecha": 1702681261793,
       "nombre": "fede",
       "tipo": "zombie",
       "alias": "asd",
@@ -57,20 +64,40 @@
       "id": 13
     },
     {
-      "nombre": "Sherk",
-      "tipo": "zombie",
-      "alias": "Ogro",
-      "miedo": "91",
-      "defensa": "crucifijo",
-      "id": 15
-    },
-    {
+      "fecha": 1702681261793,
       "nombre": "Pie grande",
       "tipo": "hombre lobo",
       "alias": "piecito",
       "miedo": "98",
       "defensa": "crucifijo",
       "id": 16
+    },
+    {
+      "fecha": 1702681261793,
+      "nombre": "fede",
+      "tipo": "fantasma",
+      "alias": "dasadsa",
+      "miedo": "77",
+      "defensa": "crucifijo",
+      "id": 17
+    },
+    {
+      "nombre": "fefa",
+      "tipo": "esqueleto",
+      "fecha": 1702681724516,
+      "alias": "fico",
+      "miedo": "39",
+      "defensa": "estaca",
+      "id": 18
+    },
+    {
+      "nombre": "Frankenstein55",
+      "tipo": "esqueleto",
+      "fecha": 1702682879028,
+      "alias": "asdsad",
+      "miedo": "50",
+      "defensa": "crucifijo",
+      "id": 19
     }
   ]
 }

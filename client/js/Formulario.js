@@ -1,6 +1,7 @@
 export const cargarSelect = (select) => {
   // const selectTipo = document.getElementById("selectTipo");
-
+  const tiposs = ["esqueleto", "zombie", "vampiro", "fantasma", "bruja", "hombre lobo"];
+  localStorage.setItem("tipos", JSON.stringify(tiposs));
   const tipos = JSON.parse(localStorage.getItem("tipos"));
   const fragment = document.createDocumentFragment();
   tipos.forEach((tipo) => {

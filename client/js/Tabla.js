@@ -13,7 +13,7 @@ function CrearTableHead(elementos) {
     const $head = document.createElement("thead");
     const $tr = document.createElement("tr");
     for (const key in elementos) {
-      if (key === "id") continue;
+      if (key === "id" || key === "fecha") continue;
       const $th = document.createElement("th");
       $th.textContent = key;
       $tr.appendChild($th);
@@ -32,7 +32,7 @@ function CrearTableBody(elementos) {
     const $tr = document.createElement("tr");
 
     for (const key in element) {
-      if (key === "id") {
+      if (key === "id" || key === "fecha") {
         $tr.setAttribute("data-id", element[key]);
         continue;
       }

@@ -27,20 +27,28 @@ cargarCheks();
 //Cargar grafico
 
 const ids = JSON.parse(localStorage.getItem("ids")) || [];
-let frecuencias = {};
 
-ids.forEach((id) => {
-  frecuencias[id] = (frecuencias[id] || 0) + 1;
-});
-const arrayDePares = Object.entries(frecuencias);
-arrayDePares.sort((a, b) => b[1] - a[1]);
+function cargarCharts() {
+  let frecuencias = {};
 
-const tresMasAlto = arrayDePares.slice(0, 3);
-const monster = jsonMonstruos.find((value) => value.id == tresMasAlto[0][0]);
-const monster2 = jsonMonstruos.find((value) => value.id == tresMasAlto[1][0]);
-const monster3 = jsonMonstruos.find((value) => value.id == tresMasAlto[2][0]);
+  ids.forEach((id) => {
+    frecuencias[id] = (frecuencias[id] || 0) + 1;
+  });
+  const arrayDePares = Object.entries(frecuencias);
+  arrayDePares.sort((a, b) => b[1] - a[1]);
 
-cargarChart(monster.nombre, monster2.nombre, monster3.nombre, tresMasAlto[0][1], tresMasAlto[1][1], tresMasAlto[2][1]);
+  const tresMasAlto = arrayDePares.slice(0, 3);
+  const fechas = [];
+
+  for (let index = 0; index < 3; index++) {
+    const monster = jsonMonstruos.find((value) => value.id == tresMasAlto[index][0]);
+    fechas.push(monster.fecha);
+  }
+
+  generarChart(tresMasAlto, fechas);
+}
+
+cargarCharts();
 
 //PAGINA PRINCIPAL
 const anclaPrincipal = document.getElementById("getMonstruos");
@@ -95,6 +103,7 @@ $form.addEventListener("submit", (e) => {
     monstruoAlta.setId(parseInt(id + 1));
     ajaxPostCreate(URL_DB, $spinner, monstruoAlta, $seccionTabla);
     monstruoCreate(monstruoAlta);
+    console.log(monstruoAlta);
   }
   //MODIFICAR
   else if ($btnSubmit.value === "Modificar") {
@@ -273,16 +282,16 @@ function cargarCheks() {
   });
 }
 
-function cargarChart(mon1, mon2, mon3, num1, num2, num3) {
+function generarChart(ids, fechas) {
   let ctx = document.getElementById("myChart").getContext("2d");
   new Chart(ctx, {
     type: "bar",
     data: {
-      labels: [mon1, mon2, mon3],
+      labels: [ids[0][0] + " " + fechas[0], ids[1][0] + " " + fechas[1], ids[2][0] + " " + fechas[2]],
       datasets: [
         {
-          label: "Num datos",
-          data: [num1, num2, num3],
+          label: "Monstruos más clickeados",
+          data: [ids[0][1], ids[1][1], ids[2][1]],
           backgroundColor: ["rgb(66,134,244)", "rgb(74,135,72)", "rgb(229,89,50)"],
         },
       ],
