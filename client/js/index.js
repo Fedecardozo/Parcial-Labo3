@@ -29,23 +29,24 @@ cargarCheks();
 const ids = JSON.parse(localStorage.getItem("ids")) || [];
 
 function cargarCharts() {
-  let frecuencias = {};
+  if (ids.length > 0) {
+    let frecuencias = {};
 
-  ids.forEach((id) => {
-    frecuencias[id] = (frecuencias[id] || 0) + 1;
-  });
-  const arrayDePares = Object.entries(frecuencias);
-  arrayDePares.sort((a, b) => b[1] - a[1]);
+    ids.forEach((id) => {
+      frecuencias[id] = (frecuencias[id] || 0) + 1;
+    });
+    const arrayDePares = Object.entries(frecuencias);
+    arrayDePares.sort((a, b) => b[1] - a[1]);
 
-  const tresMasAlto = arrayDePares.slice(0, 3);
-  const fechas = [];
+    const tresMasAlto = arrayDePares.slice(0, 3);
+    const fechas = [];
+    for (let index = 0; index < 3; index++) {
+      const monster = jsonMonstruos.find((value) => value.id == tresMasAlto[index][0]);
+      fechas.push(monster.fecha);
+    }
 
-  for (let index = 0; index < 3; index++) {
-    const monster = jsonMonstruos.find((value) => value.id == tresMasAlto[index][0]);
-    fechas.push(monster.fecha);
+    generarChart(tresMasAlto, fechas);
   }
-
-  generarChart(tresMasAlto, fechas);
 }
 
 cargarCharts();
