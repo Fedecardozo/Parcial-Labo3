@@ -32,8 +32,10 @@ function CrearTableBody(elementos) {
     const $tr = document.createElement("tr");
 
     for (const key in element) {
-      if (key === "id" || key === "fecha") {
+      if (key === "id") {
         $tr.setAttribute("data-id", element[key]);
+        continue;
+      } else if (key === "fecha") {
         continue;
       }
       const $td = document.createElement("td");

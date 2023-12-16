@@ -29,6 +29,8 @@ cargarCheks();
 const ids = JSON.parse(localStorage.getItem("ids")) || [];
 
 function cargarCharts() {
+  // localStorage.setItem(JSON.stringify([1, 2, 3, 1, 2, 1, 1, 1, 4, 5, 5, 4, 4, 5, 2, 5, 1, 16, 15, 6]));
+
   if (ids.length > 0) {
     let frecuencias = {};
 
@@ -141,7 +143,9 @@ window.addEventListener("click", (e) => {
   //OBTENER CELDA SELECIONADA
   if (target.matches("td")) {
     let id = e.target.parentElement.dataset.id;
+    // console.log(id);
     const selectedMonstruo = jsonMonstruos.find((value) => value.id == id);
+    console.log(selectedMonstruo);
     CargarFormulario($form, selectedMonstruo);
     ManejoBtns($btnSubmit, $btnEliminar, $btnCancelar, false);
     $txtId.value = id;

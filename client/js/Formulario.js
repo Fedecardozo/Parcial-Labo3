@@ -28,7 +28,7 @@ export const ManejoBtns = ($btnGuardar, $btnEliminar, $btnCancelar, guardar) => 
 };
 
 export const CargarFormulario = ($formulario, monstruo) => {
-  //   const { nombre, alias, defensa, miedo, selectTipo } = $formulario;
+  // const { nombre, alias, defensa, miedo, selectTipo } = $formulario;
 
   $formulario.nombre.value = monstruo.nombre;
   $formulario.alias.value = monstruo.alias;
